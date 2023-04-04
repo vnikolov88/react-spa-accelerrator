@@ -5,22 +5,17 @@ import { components, hooks, utils } from '@generouted/react-router/client'
 
 export type Path =
   | `/`
-  | `/about`
+  | `/charecters/:currentPage?`
+  | `/charecters/view/:id`
   | `/login`
-  | `/posts`
-  | `/posts/:id`
-  | `/posts/:id/:pid?`
-  | `/posts/:id/deep`
-  | `/register`
-  | `/splat/${string}`
+  | `/logout`
 
 export type Params = {
-  '/posts/:id': { id: string }
-  '/posts/:id/:pid?': { id: string; pid?: string }
-  '/posts/:id/deep': { id: string }
+  '/charecters/:currentPage?': { currentPage?: string }
+  '/charecters/view/:id': { id: string }
 }
 
-export type ModalPath = `/modal`
+export type ModalPath = never
 
 export const { Link, Navigate } = components<Path, Params>()
 export const { useModals, useNavigate, useParams } = hooks<Path, Params, ModalPath>()
