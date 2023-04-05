@@ -1,6 +1,6 @@
 import CharecterCard from "@/components/CharecterCard";
+import Pagination from "@/components/Pagination";
 import { getAllCharecters } from "@/features/rickAndMorty";
-import { Pagination } from "antd";
 import {
   LoaderFunctionArgs,
   Outlet,
@@ -33,9 +33,8 @@ export default function Index() {
           navigate(`/charecters/${page}`);
         }}
         current={currentPageNumber}
-        showSizeChanger={false}
         pageSize={20}
-        total={info.count}
+        totalItems={info.count}
       />
       {results && (
         <ul className="flex flex-wrap gap-4">

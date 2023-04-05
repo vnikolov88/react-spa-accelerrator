@@ -1,5 +1,3 @@
-import { Card } from "antd";
-
 type Props = {
   id: number;
   name: string;
@@ -15,15 +13,25 @@ export default function CharecterCard(props: Props) {
   const { image, name, status, species, type, gender, onClick } = props;
 
   return (
-    <Card
-      hoverable
-      onClick={onClick}
-      style={{ width: 240 }}
-      cover={<img alt="example" src={image} />}
-    >
-      <Card.Meta title={name} description={status} />
-      <Card.Meta title={species} description={type} />
-      <p>{gender}</p>
-    </Card>
+    <div className="card w-96 bg-base-100 shadow-xl" onClick={() => onClick()}>
+      <figure className="avatar">
+        <div className="h-40 w-40 rounded">
+          <img src={image} alt={name} />
+        </div>
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">
+          {name}
+          {status !== "unknown" ?? (
+            <div className="badge-secondary badge">{status}</div>
+          )}
+        </h2>
+        <p>{type}</p>
+        <div className="card-actions justify-end">
+          <div className="badge-info badge-outline badge">{species}</div>
+          <div className="badge-accent badge-outline badge">{gender}</div>
+        </div>
+      </div>
+    </div>
   );
 }

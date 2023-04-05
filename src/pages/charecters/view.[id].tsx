@@ -1,5 +1,4 @@
 import { getCharecterById } from "@/features/rickAndMorty";
-import { Button, Descriptions, Divider } from "antd";
 import {
   LoaderFunctionArgs,
   useLoaderData,
@@ -17,25 +16,52 @@ export default function View() {
     useLoaderData() as Awaited<ReturnType<typeof Loader>>;
 
   return (
-    <div>
-      <Button type="primary" onClick={() => navigate(-1)}>
+    <div className="space-y-4">
+      <button className="btn-primary btn" onClick={() => navigate(-1)}>
         Go Back
-      </Button>
-      <Divider />
-      <div className="flex gap-4">
-        <img src={image} alt={name} />
-        <Descriptions title="Charecter Info">
-          <Descriptions.Item label="Charecter ID">{id}</Descriptions.Item>
-          <Descriptions.Item label="Name">{name}</Descriptions.Item>
-          <Descriptions.Item label="Gender">{gender}</Descriptions.Item>
-          <Descriptions.Item label="Species">{species}</Descriptions.Item>
-          <Descriptions.Item label="Status">{status}</Descriptions.Item>
-          <Descriptions.Item label="Type">{type}</Descriptions.Item>
-          <Descriptions.Item label="location">
+      </button>
+      <div className="divider" />
+      <h1 className="text-4xl font-bold">Charecter Info</h1>
+      <div className="flex max-h-80 gap-4">
+        <div className="avatar">
+          <div className="h-40 w-40 rounded">
+            <img src={image} alt={name} />
+          </div>
+        </div>
+        <div className="flex flex-col flex-wrap gap-10">
+          <div className="flex flex-col text-2xl">
+            <div className="badge">Charecter ID</div>
+            {id}
+          </div>
+          <div className="flex flex-col text-2xl">
+            <div className="badge">Name</div>
+            {name}
+          </div>
+          <div className="flex flex-col text-2xl">
+            <div className="badge">Gender</div>
+            {gender}
+          </div>
+          <div className="flex flex-col text-2xl">
+            <div className="badge">Species</div>
+            {species}
+          </div>
+          <div className="flex flex-col text-2xl">
+            <div className="badge">Status</div>
+            {status}
+          </div>
+          <div className="flex flex-col text-2xl">
+            <div className="badge">Type</div>
+            {type}
+          </div>
+          <div className="flex flex-col text-2xl">
+            <div className="badge">Location</div>
             {location.name}
-          </Descriptions.Item>
-          <Descriptions.Item label="Origin">{origin.name}</Descriptions.Item>
-        </Descriptions>
+          </div>
+          <div className="flex flex-col text-2xl">
+            <div className="badge">Origin</div>
+            {origin.name}
+          </div>
+        </div>
       </div>
     </div>
   );

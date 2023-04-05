@@ -1,6 +1,6 @@
 import { useAuth } from "@/context";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { ActionFunctionArgs, useNavigate, useParams } from "react-router-dom";
 
 export default function Login() {
   const auth = useAuth();
@@ -19,23 +19,53 @@ export default function Login() {
 
   return (
     <>
-      <h1 className="font-mono text-2xl">/auth</h1>
-
-      <div className="m-6 flex w-56 flex-col">
-        <input
-          className="rounded border p-3 text-center"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleChange}
-        />
-        <button
-          className="mt-3 rounded border border-black bg-[#1c2954] px-4 py-3 text-white disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-200 disabled:text-gray-600"
-          onClick={login}
-          disabled={!email}
-        >
-          Login
-        </button>
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="text-center lg:text-left">
+            <h1 className="text-5xl font-bold">Login now!</h1>
+            <p className="py-6">
+              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
+              et a id nisi.
+            </p>
+          </div>
+          <div className="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
+            <div className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  value={email}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="email"
+                  className="input-bordered input"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="password"
+                  className="input-bordered input"
+                />
+                <label className="label">
+                  <a href="#" className="link-hover label-text-alt link">
+                    Forgot password?
+                  </a>
+                </label>
+              </div>
+              <div className="form-control mt-6">
+                <button className="btn-primary btn" onClick={() => login()}>
+                  Login
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

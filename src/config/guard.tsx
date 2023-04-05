@@ -5,7 +5,11 @@ import { useAuth } from "@/context";
 const PRIVATE = ["/charecters/view/:id"];
 const PUBLIC = ["/login"];
 
-export const Guard = ({ children }: { children: JSX.Element }) => {
+export const Guard = ({
+  children,
+}: {
+  children: JSX.Element | JSX.Element[];
+}) => {
   const auth = useAuth();
   const location = useLocation();
   const marches = useMatches();
