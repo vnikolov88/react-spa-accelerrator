@@ -1,14 +1,4 @@
-import { Navigate } from "@/router";
-import {
-  Button,
-  Card,
-  Carousel,
-  Col,
-  DatePicker,
-  Divider,
-  Result,
-  Row,
-} from "antd";
+import { Button, Card, Col, DatePicker, Divider, Result, Row } from "antd";
 
 export const Loader = () => "Route loader";
 export const Action = () => "Route action";

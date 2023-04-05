@@ -1,8 +1,12 @@
 import CharecterCard from "@/components/CharecterCard";
 import { getAllCharecters } from "@/features/rickAndMorty";
-import { useNavigate } from "@/router";
 import { Pagination } from "antd";
-import { LoaderFunctionArgs, Outlet, useLoaderData } from "react-router-dom";
+import {
+  LoaderFunctionArgs,
+  Outlet,
+  useLoaderData,
+  useNavigate,
+} from "react-router-dom";
 
 export async function Loader({ params }: LoaderFunctionArgs) {
   const { currentPage } = params;
@@ -26,9 +30,7 @@ export default function Index() {
       <Pagination
         className="flex justify-center"
         onChange={(page) => {
-          navigate(`/charecters/:currentPage?`, {
-            params: { currentPage: String(page) },
-          });
+          navigate(`/charecters/${page}`);
         }}
         current={currentPageNumber}
         showSizeChanger={false}
@@ -48,9 +50,7 @@ export default function Index() {
                 species={species}
                 type={type}
                 onClick={() => {
-                  navigate(`/charecters/view/:id`, {
-                    params: { id: String(id) },
-                  });
+                  navigate(`/charecters/view/${id}`);
                 }}
               />
             </li>

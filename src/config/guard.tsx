@@ -1,9 +1,8 @@
 import { matchPath, Navigate, useLocation, useMatches } from "react-router-dom";
 
 import { useAuth } from "@/context";
-import { Path } from "@/router";
 
-const PRIVATE: Path[] = ["/charecters/view/:id"];
+const PRIVATE = ["/charecters/view/:id"];
 const PUBLIC = ["/login"];
 
 export const Guard = ({ children }: { children: JSX.Element }) => {

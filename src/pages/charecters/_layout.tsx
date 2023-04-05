@@ -5,7 +5,7 @@ export default function About() {
   const { user } = useAuth();
 
   return (
-    <div>
+    <div className="p-4">
       <h1>You are seeing this page as {user?.email}</h1>
       <Outlet />
     </div>

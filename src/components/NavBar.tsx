@@ -1,16 +1,7 @@
-import { Params, Path, useNavigate } from "@/router";
-import type { MenuProps } from "antd";
 import { Menu, Layout } from "antd";
+import { useNavigate } from "react-router-dom";
 
-type MenuItem = Required<MenuProps>["items"][number];
-
-type MenuItemRoutable<path> = MenuItem & {
-  key: string;
-  to: path;
-  params?: path extends keyof Params ? Params[path] : never;
-};
-
-const menuItems: MenuItemRoutable<Path>[] = [
+const menuItems = [
   {
     key: "home",
     label: "Home",
@@ -20,7 +11,6 @@ const menuItems: MenuItemRoutable<Path>[] = [
     key: "charecters",
     label: "Charecters",
     to: "/charecters/:currentPage?",
-    params: { currentPage: "1" },
   },
 ];
 
@@ -36,12 +26,7 @@ export default function NavBar() {
         onClick={({ key }) => {
           const item = menuItems.find((item) => item.key === key);
           if (item) {
-            const { to, params } = item;
-            const routeParams = params as Params[typeof to extends keyof Params
-              ? typeof to
-              : never];
-            if (params) navigate(to, { params: routeParams });
-            else navigate(to);
+            navigate(item.to);
           }
         }}
       />

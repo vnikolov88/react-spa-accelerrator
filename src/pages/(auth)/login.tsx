@@ -1,12 +1,11 @@
 import { useAuth } from "@/context";
-import { useParams } from "@/router";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function Login() {
   const auth = useAuth();
   const navigate = useNavigate();
-  const { returnTo } = useParams("/login/:returnTo?");
+  const { returnTo } = useParams();
 
   const [email, setEmail] = useState("");
 
